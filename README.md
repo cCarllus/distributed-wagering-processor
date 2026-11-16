@@ -4,7 +4,7 @@
 
 API de apostas simuladas com NestJS, PostgreSQL e SQS local. HTTP e fila usam o mesmo caso de uso; cada decisão fica registrada e o saldo pode ser reconstruído pelo ledger. A dashboard permite explorar esses fluxos sem montar requisições à mão.
 
-[![CI](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml)
+[![GitHub Actions: ver execuções](assets/navigation/ci.svg)](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml)
 
 ## Escolha por onde começar
 
