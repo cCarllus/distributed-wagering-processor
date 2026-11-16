@@ -1,0 +1,2 @@
+# Preserve raw command evidence; Docker progress lines include trailing spaces.
+evidence/*.log -whitespace

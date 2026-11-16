@@ -1,0 +1,23 @@
+schema: spec-driven
+
+context: |
+  Distributed Wagering Processor, a local simulation of the Jungle Gaming challenge.
+  Bun 1.3.14, strict TypeScript, NestJS, MikroORM, PostgreSQL, LocalStack SQS and React.
+  Money uses bigint cents internally and exact decimal strings at the HTTP boundary.
+  HTTP and SQS share one application use case; PostgreSQL owns financial consistency.
+  Official challenge revision: c7143e6d041585d6913f56eb7415105e074f83dc.
+  This OpenSpec baseline was introduced retrospectively on 2026-11-16 after implementation
+  and testing. Archived recording changes document verified behavior, not prior planning.
+  No real money, real AWS, external authentication or production integrations.
+  README.md and ARCHITECTURE.md are in Portuguese; normative specs use English.
+
+rules:
+  proposal:
+    - Distinguish new behavior from retrospective documentation of existing behavior.
+    - Identify affected capabilities and explicit scope boundaries.
+  specs:
+    - Each requirement must have an observable scenario and a source or test reference.
+    - State delivery, ordering and recovery limitations precisely.
+  tasks:
+    - Only mark work complete when the implementation or validation actually exists.
+    - Separate browser verification from automated tests and production acceptance.

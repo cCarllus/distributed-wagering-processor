@@ -153,4 +153,75 @@ A fila de entrada é `wager-transactions.fifo`; a DLQ é `wager-transactions-dlq
 {
   "messageId": "msg-local-1",
   "type": "WagerTransactionRequested",
-... (+72 lines) [see remaining: rtk proxy git show HEAD:README.md | tail -n +156]
+  "occurredAt": "2026-11-16T03:00:00.000Z",
+  "data": {
+    "providerId": "provider-a",
+    "externalTransactionId": "bet-1",
+    "idempotencyKey": "provider-a:bet-1",
+    "playerId": "0192f28f-5dc0-7d58-bdb2-814ad6a0f4a1",
+    "walletId": "0192f291-27dd-7d3f-8071-5f8685deef37",
+    "roundId": "round-1",
+    "gameId": "game-1",
+    "kind": "BET",
+    "money": { "amount": "25.00", "currency": "BRL" }
+  }
+}
+```
+
+`LocalSqs.send(INPUT_QUEUE, JSON.stringify(envelope), walletId, transportDedupId)` envia para o LocalStack. A suíte exercita esse caminho com o SDK real. Para testar reentrega além da janela de dedup do SQS, varie o `MessageDeduplicationId`; a deduplicação financeira continua no PostgreSQL.
+
+## Explorando pela dashboard
+
+A interface permite criar carteiras, enviar as cinco operações, filtrar transações, consultar a decisão original e percorrer o extrato. A tela de operação mostra saúde e contagens de inbox/outbox; essas contagens não representam o tamanho das filas.
+
+Antes de enviar, o formulário salva corpo e chave em `sessionStorage`. Em timeout ou 503, o retry reutiliza ambos, inclusive após reload na mesma aba. Uma pendência confirmada permite iniciar outra operação para fornecer a referência que falta. A atualização geral é manual; o modal de pendência consulta o resultado automaticamente, sem requisições sobrepostas.
+
+A apresentação usa navegação escura, amarelo nas ações e superfícies com profundidade discreta. Valores de moedas diferentes não são somados nem convertidos. O layout se adapta a desktop e celular, com tabelas que têm rolagem própria.
+
+<p align="center">
+  <img src="assets/dashboard-mobile.jpg" alt="Dashboard em viewport mobile" width="250" />
+  <img src="assets/wallet-reconciliation.jpg" alt="Extrato e reconciliação de uma carteira" width="520" />
+</p>
+
+## Testes e verificação
+
+A suíte completa usa PostgreSQL e SQS reais em containers. Ela recria somente `wager_test`, limpa as filas deste projeto, inicia processos nas portas 3211–3216 e interrompe temporariamente seu PostgreSQL para testar recuperação. Pare a demo durante a execução, pois ela compartilha essas filas.
+
+```sh
+bun install --frozen-lockfile --ignore-scripts
+docker compose up -d --wait postgres localstack
+docker compose stop app
+bun run lint
+bun run typecheck
+bun run build
+bun test --timeout 120000
+docker compose --profile app up -d --build --wait
+```
+
+`bun run test:unit` executa apenas unidade; `bun run test:integration` exige os containers e o frontend já compilado. Ausência de infraestrutura causa falha, não aprovação ou skip. Logs dos processos de teste ficam em `.artifacts/tests/`, fora do Git.
+
+A última validação funcional registrou **75 testes aprovados, 0 falhas e 1.744 verificações**: 34 testes unitários e 41 de integração. Inclui três processos Nest, 50 envios iguais, disputa por saldo, independência entre wallets, dois publishers, morte depois do commit e antes do ACK, retry/DLQ, referências fora de ordem, migrations up/down e reconciliação após cada cenário.
+
+Também houve verificação real da dashboard no navegador, em desktop e viewport mobile: criação, cinco operações, replay, filtros, paginação, falha do banco e retomada. Essa inspeção é distinta da suíte automatizada. O resumo e a rastreabilidade estão no [OpenSpec](openspec/README.md).
+
+## Onde encontrar cada parte
+
+```text
+frontend/src/                 Interface, formulários e cliente HTTP
+src/domain/                   Money, wallet, transações, ledger e eventos
+src/application/              Caso de uso compartilhado, contratos e portas
+src/http/                     Controllers, respostas e ponto de extensão de auth
+src/infrastructure/           MikroORM, migrations, consultas, SQS e métricas
+src/workers/                  Consumer, referências, publisher e shutdown
+tests/                        Unidade, integração e processos de crash
+scripts/                      Build, migrations, filas e demonstração
+openspec/specs/               Comportamento atual por capacidade
+openspec/changes/archive/     Registros retrospectivos verificados
+assets/                       Capturas usadas nesta documentação
+```
+
+O OpenSpec foi introduzido após a implementação, em 16/11/2026, para consolidar os contratos e cenários já verificados. As três mudanças arquivadas registram essa adoção retrospectiva. Novas alterações podem partir dessas specs.
+
+A fonte do desafio foi conferida na revisão `c7143e6d041585d6913f56eb7415105e074f83dc`. O desenvolvimento teve assistência do Codex; não foram consultadas soluções de candidatos ou forks. As decisões e os limites permanecem explícitos para revisão técnica.
+
+Para encerrar mantendo o banco, use `docker compose --profile app down`. Evite `down -v` se quiser preservar as carteiras. `bun run migrate:down` reverte a última migration; reverter também a migration base remove as tabelas financeiras. O LocalStack desta demo não persiste filas entre recriações.
