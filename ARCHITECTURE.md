@@ -248,6 +248,8 @@ Liveness verifica o processo. Readiness consulta banco e três filas. Uma submis
 
 A configuração é uma simulação local: não há IdP, autorização de provedor, dupla entrada contábil, benchmark de carga ou garantia de produção. O ponto de extensão de autenticação é `LocalOnlyAuthGuard`. O banco é persistido pelo Compose; o LocalStack está com persistência desabilitada e perde filas ao ser recriado.
 
+Para uma integração autenticada, substituiria esse guard por validação OIDC de um IdP externo, como Keycloak: assinatura via JWKS, issuer, audience, expiração e escopos. A identidade autenticada seria vinculada ao provedor autorizado, em vez de confiar apenas no `providerId` enviado no corpo. Health permaneceria aberto; SQS seria um canal interno com acesso restrito à fila, preservando as validações de identidade do domínio. Não haveria cadastro de senhas próprio na aplicação.
+
 Inbox, aliases, transações e ledger não têm limpeza automática. Remover identidades sem uma política de retenção mudaria as garantias de replay. Os read models da dashboard consultam o banco diretamente; volumes maiores pediriam análise de planos, índices e projeções incrementais. Nenhuma promessa de throughput ou entrega exatamente uma vez depende desta implementação.
 
 O [índice OpenSpec](openspec/README.md) liga essas decisões às specs, ao código e aos testes. As specs foram consolidadas retrospectivamente em 16/11/2026 e os registros arquivados deixam essa origem explícita.
