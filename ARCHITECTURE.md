@@ -47,7 +47,7 @@ sequenceDiagram
     Note over B,DB: B aguarda o lock
     A->>DB: BET 80, saldo 20, ledger, outbox
     A->>DB: COMMIT
-    DB-->>B: Lock adquirido; saldo 20
+    DB-->>B: Lock adquirido, saldo 20
     B->>DB: REJECTED / INSUFFICIENT_FUNDS
     B->>DB: COMMIT
 ```
