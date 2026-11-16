@@ -2,7 +2,7 @@
 
 [Início](../README.md) · [01](../guide/iniciar.md) · [02](../guide/api.md) · [03](../guide/dashboard.md) · [04](../ARCHITECTURE.md) · [05](../guide/testes.md) · **06 · Especificações**
 
-Este catálogo foi iniciado com OpenSpec 1.13.1 em 16/11/2026, depois da implementação e da validação do sistema. As mudanças arquivadas são registros retrospectivos: consolidam contratos e cenários que já existiam, sem sugerir que as specs antecederam o código.
+Este catálogo foi iniciado com OpenSpec 1.13.1 em 16/11/2026, depois da implementação e da validação do sistema. Os três registros iniciais são retrospectivos: consolidam contratos e cenários que já existiam, sem sugerir que as specs antecederam o código. A mudança de navegação e CI foi proposta antes de sua implementação.
 
 A fonte funcional é o [README oficial do desafio](https://github.com/junglegaming/backend-challenge/blob/c7143e6d041585d6913f56eb7415105e074f83dc/README.md), revisão `c7143e6d041585d6913f56eb7415105e074f83dc`. O desenvolvimento foi assistido pelo Codex; não foram utilizadas soluções de candidatos ou forks.
 
@@ -19,15 +19,18 @@ A fonte funcional é o [README oficial do desafio](https://github.com/junglegami
 | [pending-references](specs/pending-references/spec.md) | Trabalho fora de ordem, prazo e seleção por wallet | `references.ts`, `process-wager.ts`, `store.ts`; TTL, retomada e wallet ocupada |
 | [observability](specs/observability/spec.md) | Logs, métricas, saúde e fronteira local | `telemetry.ts`, `config.ts`, `api.ts`; live/ready e métricas |
 | [dashboard-console](specs/dashboard-console/spec.md) | Fluxos da interface e recuperação de envio | `frontend/src/`; unidade, contratos HTTP e inspeção real do navegador |
+| [project-documentation](specs/project-documentation/spec.md) | Navegação por assunto, paginação e links locais | README, `guide/`, botões SVG e `scripts/check-docs.ts` |
 | [system-verification](specs/system-verification/spec.md) | Setup, testes reais e rastreabilidade | `package.json`, Compose, migrations, `tests/` e registros de verificação |
 
 Os caminhos abreviados referem-se às áreas descritas no [README](../README.md). Os testes completos ficam em `tests/unit/` e `tests/integration/system.test.ts`.
 
-## Registros arquivados
+## Mudanças arquivadas
 
 - [Núcleo financeiro](changes/archive/2026-11-16-record-financial-core/proposal.md): dinheiro, carteira/ledger, operações e HTTP idempotente.
 - [Processamento distribuído](changes/archive/2026-11-16-record-distributed-processing/proposal.md): inbox, outbox, referências e observabilidade.
 - [Dashboard e validação](changes/archive/2026-11-16-record-dashboard-and-qa/proposal.md): console, recuperação de falhas e verificação do conjunto.
+
+- [Navegação e CI](changes/archive/2026-11-16-improve-reading-and-ci/proposal.md): páginas de leitura e validação automática, com [resultado observado](changes/archive/2026-11-16-improve-reading-and-ci/verification.md).
 
 Cada registro contém proposal, design, tarefas concluídas, delta specs e um resumo de verificação. O arquivamento sincroniza as specs principais em `openspec/specs/`.
 

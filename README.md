@@ -6,25 +6,23 @@ API de apostas simuladas com NestJS, PostgreSQL e SQS local. HTTP e fila usam o 
 
 [![CI](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml)
 
-![Dashboard com saldo, atividade e histórico](assets/dashboard-desktop.jpg)
-
 ## Escolha por onde começar
 
 Leia na ordem ou vá direto ao assunto. Cada página tem navegação para continuar a leitura.
 
 <p>
-  <a href="guide/iniciar.md"><img src="assets/navigation/iniciar.svg" width="420" alt="01 · Começar — Ambiente pronto em poucos passos" /></a>
-  <a href="guide/api.md"><img src="assets/navigation/api.svg" width="420" alt="02 · API e mensagens — Contratos, exemplos e respostas" /></a>
+  <a href="guide/iniciar.md"><img src="assets/navigation/iniciar.svg" width="400" alt="01 · Começar — Ambiente pronto em poucos passos" /></a>
+  <a href="guide/api.md"><img src="assets/navigation/api.svg" width="400" alt="02 · API e mensagens — Contratos, exemplos e respostas" /></a>
 </p>
 
 <p>
-  <a href="guide/dashboard.md"><img src="assets/navigation/dashboard.svg" width="420" alt="03 · Dashboard — Explore carteiras e transações" /></a>
-  <a href="ARCHITECTURE.md"><img src="assets/navigation/arquitetura.svg" width="420" alt="04 · Arquitetura — Concorrência, idempotência e falhas" /></a>
+  <a href="guide/dashboard.md"><img src="assets/navigation/dashboard.svg" width="400" alt="03 · Dashboard — Explore carteiras e transações" /></a>
+  <a href="ARCHITECTURE.md"><img src="assets/navigation/arquitetura.svg" width="400" alt="04 · Arquitetura — Concorrência, idempotência e falhas" /></a>
 </p>
 
 <p>
-  <a href="guide/testes.md"><img src="assets/navigation/testes.svg" width="420" alt="05 · Testes e CI — Validação local e GitHub Actions" /></a>
-  <a href="openspec/README.md"><img src="assets/navigation/specs.svg" width="420" alt="06 · Especificações — Requisitos, cenários e decisões" /></a>
+  <a href="guide/testes.md"><img src="assets/navigation/testes.svg" width="400" alt="05 · Testes e CI — Validação local e GitHub Actions" /></a>
+  <a href="openspec/README.md"><img src="assets/navigation/specs.svg" width="400" alt="06 · Especificações — Requisitos, cenários e decisões" /></a>
 </p>
 
 ## Rode em um comando
@@ -38,6 +36,13 @@ docker compose --profile app up -d --build --wait
 Abra **[127.0.0.1:3100](http://127.0.0.1:3100/)** e crie a primeira carteira. Migrations e filas são preparadas automaticamente. O [guia de início](guide/iniciar.md) traz a alternativa com Bun, portas e comandos para preservar os dados.
 
 > Simulação local, com valores e credenciais fictícios. A API não tem autenticação externa e as portas ficam em `127.0.0.1`; não exponha esta configuração na internet.
+
+<details>
+<summary><strong>Veja a dashboard em funcionamento</strong></summary>
+
+![Dashboard com saldo, atividade e histórico](assets/dashboard-desktop.jpg)
+
+</details>
 
 ## Três decisões centrais
 

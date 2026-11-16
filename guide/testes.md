@@ -26,7 +26,7 @@ Também houve verificação real da dashboard no navegador, em desktop e viewpor
 
 ## GitHub Actions
 
-O workflow [CI](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml) executa em pushes para `main`, pull requests e acionamento manual. O resultado pertence ao commit mostrado em cada execução.
+O workflow [CI](https://github.com/cCarllus/distributed-wagering-processor/actions/workflows/ci.yml) executa em pushes para `main`, pull requests e acionamento manual. O resultado pertence ao commit mostrado em cada execução. A [primeira execução completa](https://github.com/cCarllus/distributed-wagering-processor/actions/runs/43811534795) passou com 75 testes e 1.744 verificações.
 
 ```mermaid
 flowchart LR

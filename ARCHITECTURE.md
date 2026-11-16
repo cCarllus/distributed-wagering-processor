@@ -269,7 +269,7 @@ Para uma integração autenticada, substituiria esse guard por validação OIDC 
 
 Inbox, aliases, transações e ledger não têm limpeza automática. Remover identidades sem uma política de retenção mudaria as garantias de replay. Os read models da dashboard consultam o banco diretamente; volumes maiores pediriam análise de planos, índices e projeções incrementais. Nenhuma promessa de throughput ou entrega exatamente uma vez depende desta implementação.
 
-O [índice OpenSpec](openspec/README.md) liga essas decisões às specs, ao código e aos testes. As specs foram consolidadas retrospectivamente em 16/11/2026 e os registros arquivados deixam essa origem explícita.
+O [índice OpenSpec](openspec/README.md) liga essas decisões às specs, ao código e aos testes. A base inicial foi consolidada retrospectivamente em 16/11/2026. Os registros arquivados distinguem essa adoção das mudanças posteriores, propostas antes da implementação.
 
 ---
 
