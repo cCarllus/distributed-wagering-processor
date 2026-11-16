@@ -1,5 +1,7 @@
 # OpenSpec do projeto
 
+[Início](../README.md) · [01](../guide/iniciar.md) · [02](../guide/api.md) · [03](../guide/dashboard.md) · [04](../ARCHITECTURE.md) · [05](../guide/testes.md) · **06 · Especificações**
+
 Este catálogo foi iniciado com OpenSpec 1.13.1 em 16/11/2026, depois da implementação e da validação do sistema. As mudanças arquivadas são registros retrospectivos: consolidam contratos e cenários que já existiam, sem sugerir que as specs antecederam o código.
 
 A fonte funcional é o [README oficial do desafio](https://github.com/junglegaming/backend-challenge/blob/c7143e6d041585d6913f56eb7415105e074f83dc/README.md), revisão `c7143e6d041585d6913f56eb7415105e074f83dc`. O desenvolvimento foi assistido pelo Codex; não foram utilizadas soluções de candidatos ou forks.
@@ -82,3 +84,7 @@ OPENSPEC_TELEMETRY=0 openspec archive nome-da-mudanca --yes
 ```
 
 As novas mudanças devem registrar intenção antes da implementação. Só marque tarefas concluídas com código ou validação observável; resultados de navegador, testes automatizados e aceitação de produção são categorias diferentes.
+
+---
+
+← [Anterior: Testes e CI](../guide/testes.md) &nbsp; · &nbsp; [Voltar ao início](../README.md)

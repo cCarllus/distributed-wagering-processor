@@ -16,6 +16,7 @@
     "queues": "bun scripts/queues.ts",
     "lint": "biome check src tests scripts frontend",
     "format": "biome check --write src tests scripts frontend",
+    "check:docs": "bun scripts/check-docs.ts",
     "typecheck": "tsc --noEmit && tsc -p frontend/tsconfig.json",
     "build": "bun run build:server && bun run build:web",
     "test": "bun test",

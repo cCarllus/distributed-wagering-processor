@@ -1,10 +1,27 @@
 # Arquitetura
 
+[Início](README.md) · [01](guide/iniciar.md) · [02](guide/api.md) · [03](guide/dashboard.md) · **04 · Arquitetura** · [05](guide/testes.md) · [06](openspec/README.md)
+
 A regra central é simples: uma movimentação só existe quando a decisão e seus efeitos foram confirmados no PostgreSQL. O broker entrega trabalho e publica eventos; o navegador oferece uma forma de operar a simulação. Nenhum deles determina o saldo.
 
 Essa separação permite explicar o comportamento em três momentos: quando duas operações disputam a mesma carteira, quando uma operação aparece novamente e quando um processo morre entre duas etapas.
 
 ## Fronteiras do código
+
+```text
+frontend/src/                 Interface, formulários e cliente HTTP
+src/domain/                   Money, wallet, transações, ledger e eventos
+src/application/              Caso de uso compartilhado, contratos e portas
+src/http/                     Controllers e ponto de extensão de auth
+src/infrastructure/           MikroORM, migrations, consultas, SQS e métricas
+src/workers/                  Consumer, referências, publisher e shutdown
+tests/                        Unidade, integração e processos de crash
+scripts/                      Build, migrations, filas e verificação de links
+.github/workflows/            Validação automática em GitHub Actions
+guide/                        Instalação, contratos, dashboard e testes
+openspec/                     Capacidades atuais e histórico de mudanças
+assets/                       Capturas e botões da documentação
+```
 
 ```mermaid
 flowchart TB
@@ -253,3 +270,7 @@ Para uma integração autenticada, substituiria esse guard por validação OIDC 
 Inbox, aliases, transações e ledger não têm limpeza automática. Remover identidades sem uma política de retenção mudaria as garantias de replay. Os read models da dashboard consultam o banco diretamente; volumes maiores pediriam análise de planos, índices e projeções incrementais. Nenhuma promessa de throughput ou entrega exatamente uma vez depende desta implementação.
 
 O [índice OpenSpec](openspec/README.md) liga essas decisões às specs, ao código e aos testes. As specs foram consolidadas retrospectivamente em 16/11/2026 e os registros arquivados deixam essa origem explícita.
+
+---
+
+← [Anterior: Dashboard](guide/dashboard.md) &nbsp; · &nbsp; [Voltar ao início](README.md) &nbsp; · &nbsp; [Próxima: Testes e CI →](guide/testes.md)

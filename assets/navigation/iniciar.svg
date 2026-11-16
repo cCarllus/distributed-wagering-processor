@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="104" viewBox="0 0 420 104" role="img" aria-labelledby="title desc">
+<title id="title">01 · Começar</title><desc id="desc">Ambiente pronto em poucos passos</desc>
+<defs><linearGradient id="surface" x2="0" y2="1"><stop stop-color="#30312e"/><stop offset="1" stop-color="#1b1c1a"/></linearGradient></defs>
+<rect x="3" y="6" width="414" height="96" rx="20" fill="#000" opacity=".15"/>
+<rect x="2" y="2" width="414" height="94" rx="19" fill="url(#surface)" stroke="#484941"/>
+<path d="M24 3h370" stroke="#fff" opacity=".12"/>
+<rect x="20" y="22" width="44" height="44" rx="14" fill="#e9c534"/>
+<text x="42" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="17" fill="#20211d">01</text>
+<text x="80" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fafaf6">Começar</text>
+<text x="80" y="64" font-family="Arial,sans-serif" font-size="13" fill="#bfc0b6">Ambiente pronto em poucos passos</text>
+<path d="m382 42 6 6-6 6" stroke="#e9c534" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
